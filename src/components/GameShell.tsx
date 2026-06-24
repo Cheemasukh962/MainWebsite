@@ -9,6 +9,7 @@ import { AboutScreen } from '../screens/AboutScreen'
 import { SkillsScreen } from '../screens/SkillsScreen'
 import { ProjectsScreen } from '../screens/ProjectsScreen'
 import { ContactScreen } from '../screens/ContactScreen'
+import { getTransitionVariants } from './transitionVariants'
 
 const SECTION_COMPONENTS: Record<SectionId, () => React.JSX.Element> = {
   about: AboutScreen,
@@ -20,12 +21,10 @@ const SECTION_COMPONENTS: Record<SectionId, () => React.JSX.Element> = {
 export function GameShell() {
   const { screen, soundEnabled, goTo, startGame, toggleSound } = useGameState()
   const reduce = useReducedMotion()
-  const anim = reduce
-    ? { initial: { opacity: 1 }, animate: { opacity: 1 }, exit: { opacity: 1 } }
-    : { initial: { opacity: 0, scale: 0.98 }, animate: { opacity: 1, scale: 1 }, exit: { opacity: 0, scale: 1.02 } }
+  const anim = getTransitionVariants(reduce ?? false)
 
   const isSection = screen !== 'boot' && screen !== 'hub'
-  const Section = isSection ? SECTION_COMPONENTS[screen as SectionId] : null
+  const Section = isSection ? (SECTION_COMPONENTS[screen as SectionId] ?? null) : null
 
   return (
     <div data-testid="app-root" className="min-h-screen bg-ki-900 text-white">
