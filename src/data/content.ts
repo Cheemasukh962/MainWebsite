@@ -6,6 +6,27 @@ export const content: Content = {
     role: 'Frontend Developer',
     bio: 'Building gamified web experiences. Replace this with your own bio.',
     avatar: '/avatar.png',
+    profile: [
+      { label: 'Role',     value: 'Frontend Developer' },
+      { label: 'Location', value: 'TBD' },
+      { label: 'Status',   value: 'Available' },
+      { label: 'Pronouns', value: 'TBD' },
+    ],
+    loadout: [
+      { label: 'Main Stack',     value: 'React + TypeScript' },
+      { label: 'Styling',        value: 'Tailwind CSS' },
+      { label: 'Editor',         value: 'VS Code' },
+      { label: 'OS',             value: 'Windows 11' },
+      { label: 'Current Quest',  value: 'Shipping this portfolio' },
+      { label: 'Tool of Choice', value: 'Claude Code' },
+    ],
+    card: {
+      level: '∞',
+      stars: 5,
+      tier: 'gold',
+      badge: 'OG',
+      seasonCode: 'S1 · T01',
+    },
   },
   trainingLevel: 48,
   skills: [
