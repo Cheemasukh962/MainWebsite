@@ -1,24 +1,67 @@
+import { useState } from 'react'
 import type { SectionId } from '../state/useGameState'
+import { XenoSelectScreen, type XenoSelectItem } from './XenoSelectScreen'
+import {
+  AboutPreview,
+  SkillsPreview,
+  ProjectsPreview,
+  ContactPreview,
+} from './HubPreviews'
 
-const OPTIONS: { id: SectionId; label: string }[] = [
-  { id: 'about', label: 'About Me' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'contact', label: 'Contact' },
+const OPTIONS: { id: SectionId; label: string; meta: string }[] = [
+  { id: 'about', label: 'About Me', meta: 'Lv. ∞' },
+  { id: 'skills', label: 'Skills', meta: 'Lv. 7' },
+  { id: 'projects', label: 'Projects', meta: 'Lv. 8' },
+  { id: 'contact', label: 'Contact', meta: 'Open' },
 ]
 
+const ITEMS: XenoSelectItem[] = OPTIONS.map((o) => ({
+  id: o.id,
+  label: o.label,
+  meta: o.meta,
+}))
+
+const PREVIEWS: Record<SectionId, JSX.Element> = {
+  about: <AboutPreview />,
+  skills: <SkillsPreview />,
+  projects: <ProjectsPreview />,
+  contact: <ContactPreview />,
+}
+
 export function MainHub({ onSelect }: { onSelect: (s: SectionId) => void }) {
-  return (
-    <div className="flex h-screen flex-col items-center justify-center gap-3 bg-ki-900">
-      {OPTIONS.map((o) => (
-        <button
-          key={o.id}
-          onClick={() => onSelect(o.id)}
-          className="w-72 rounded border-2 border-gold bg-ki-600/40 px-6 py-3 text-left text-xl text-white hover:bg-ki-400/40"
+  const [activeId, setActiveId] = useState<SectionId>(OPTIONS[0].id)
+
+  const rightPanel = (
+    <div className="relative h-[420px] w-[360px]">
+      {(Object.keys(PREVIEWS) as SectionId[]).map((id) => (
+        <div
+          key={id}
+          aria-hidden={activeId !== id}
+          className="absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-out"
+          style={{
+            opacity: activeId === id ? 1 : 0,
+            pointerEvents: activeId === id ? 'auto' : 'none',
+          }}
         >
-          {o.label}
-        </button>
+          {PREVIEWS[id]}
+        </div>
       ))}
     </div>
+  )
+
+  return (
+    <XenoSelectScreen
+      title="Select Section"
+      subtitle="Choose Your Path"
+      items={ITEMS}
+      selectedId={activeId}
+      onSelect={(id) => onSelect(id as SectionId)}
+      onActiveChange={(id) => setActiveId(id as SectionId)}
+      rightPanel={rightPanel}
+      bottomPrompts={[
+        { key: 'A', label: 'Confirm' },
+        { key: 'B', label: 'Return' },
+      ]}
+    />
   )
 }
