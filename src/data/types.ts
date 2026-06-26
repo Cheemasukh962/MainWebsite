@@ -1,6 +1,17 @@
 export type Rank = 'S' | 'A' | 'B' | 'C'
+export type SkillTier = 'bronze' | 'silver' | 'gold' | 'hof'
 
-export interface Skill { name: string; rank: Rank; level: number }
+export interface Skill {
+  id: string
+  name: string
+  rank: Rank
+  level: number
+  icon?: string
+  maxLevel?: number
+  description?: string
+  mastery?: string[]
+  projects?: string[]
+}
 export interface Project {
   id: string
   title: string

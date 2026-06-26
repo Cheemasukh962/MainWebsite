@@ -1,17 +1,28 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { SkillsScreen } from './SkillsScreen'
 import { content } from '../data/content'
 
-test('renders training level and every skill with its rank', () => {
+test('renders total mastery training level', () => {
   render(<SkillsScreen />)
   expect(screen.getByText(new RegExp(`${content.trainingLevel}%`))).toBeInTheDocument()
+})
+
+test('renders a badge button for every skill', () => {
+  render(<SkillsScreen />)
   for (const s of content.skills) {
-    expect(screen.getByText(s.name)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: s.name })).toBeInTheDocument()
   }
 })
 
-test('shows COMPLETE only for maxed skills', () => {
+test('selecting a badge shows its detail panel', async () => {
   render(<SkillsScreen />)
-  const maxed = content.skills.filter((s) => s.level >= 100).length
-  expect(screen.queryAllByText(/complete/i)).toHaveLength(maxed)
+  const target = content.skills.find((s) => s.id === 'ts') ?? content.skills[1]
+  await userEvent.click(screen.getByRole('button', { name: target.name }))
+  if (target.description) {
+    expect(screen.getByText(target.description)).toBeInTheDocument()
+  }
+  if (target.mastery && target.mastery.length > 0) {
+    expect(screen.getByText(target.mastery[0])).toBeInTheDocument()
+  }
 })
