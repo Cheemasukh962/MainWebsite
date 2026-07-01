@@ -23,8 +23,20 @@ export interface Project {
   tier?: ProjectTier
   icon?: string
   meta?: string
+  // Optional screenshot path (e.g. '/projects/aside-ai.png'). When present,
+  // the hologram panel uses it as backdrop with a Xenoverse-style overlay.
+  image?: string
 }
-export interface ContactLink { id: string; label: string; url: string; icon: string }
+export interface ContactLink {
+  id: string
+  label: string
+  url: string
+  icon: string
+  handle?: string
+  description?: string
+  moves?: string[]
+  superSoul?: string
+}
 export interface ExperienceEntry { id: string; role: string; org: string; period: string }
 export interface Stat { label: string; value: number }
 export interface InfoRow { label: string; value: string }

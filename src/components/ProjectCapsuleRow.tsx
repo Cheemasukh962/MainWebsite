@@ -1,5 +1,6 @@
 import type { Project } from '../data/types'
 import { CapsuleIcon, TierStars } from './CapsuleIcon'
+import { playClick } from '../sound/click'
 
 interface ProjectCapsuleRowProps {
   project: Project
@@ -18,7 +19,7 @@ export function ProjectCapsuleRow({
   return (
     <button
       type="button"
-      onClick={onSelect}
+      onClick={() => { playClick(); onSelect() }}
       onMouseEnter={onHover}
       onFocus={onHover}
       aria-label={project.title}

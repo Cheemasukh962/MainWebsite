@@ -35,3 +35,41 @@ export function MailIcon({ className }: IconProps) {
     </svg>
   )
 }
+
+export function TwitterIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <rect width="24" height="24" rx="4" fill="#000" />
+      <path
+        d="M17.5 5h2.5l-5.6 6.4L21 19h-5.2l-4.1-5.3L6.9 19H4.4l6-6.9L4 5h5.3l3.7 4.9L17.5 5zm-.9 12.4h1.4L7.5 6.5H6l10.6 10.9z"
+        fill="#fff"
+      />
+    </svg>
+  )
+}
+
+export function DiscordIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <rect width="24" height="24" rx="4" fill="#5865f2" />
+      <path
+        d="M18 7.4a11 11 0 00-2.7-.8l-.3.7a10 10 0 00-3-0 10 10 0 00-3 0l-.3-.7A11 11 0 006 7.4c-1.7 2.6-2.2 5.1-2 7.6a11 11 0 003.5 1.8l.7-1a7.4 7.4 0 01-1.2-.6l.3-.2a8 8 0 006.7 0l.3.2a7.4 7.4 0 01-1.2.6l.7 1a11 11 0 003.5-1.8c.2-2.9-.4-5.4-2-7.6zm-6.6 6.1c-.7 0-1.2-.6-1.2-1.4 0-.8.5-1.4 1.2-1.4.7 0 1.3.6 1.2 1.4 0 .8-.5 1.4-1.2 1.4zm4.4 0c-.7 0-1.2-.6-1.2-1.4 0-.8.5-1.4 1.2-1.4.7 0 1.3.6 1.2 1.4 0 .8-.5 1.4-1.2 1.4z"
+        fill="#fff"
+      />
+    </svg>
+  )
+}
+
+export function GlobeIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="10" fill="#1565c0" />
+      <path
+        d="M12 2a15 15 0 00-4 10 15 15 0 004 10 15 15 0 004-10 15 15 0 00-4-10zm-1.5 10c0-2.7.5-5.2 1.5-7.3.9 2 1.5 4.6 1.5 7.3 0 2.7-.5 5.2-1.5 7.3-.9-2-1.5-4.6-1.5-7.3z"
+        fill="#fff"
+        opacity="0.8"
+      />
+      <path d="M2 12h20M2 8h20M2 16h20" stroke="#fff" strokeWidth="0.4" opacity="0.5" />
+    </svg>
+  )
+}

@@ -14,7 +14,10 @@
       "Bash(git -C /c/Users/cheem/websiteddd config user.name \"Zukai\")",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(/c/Users/cheem/.claude/plugins/cache/claude-plugins-official/superpowers/6.0.3/skills/subagent-driven-development/scripts/review-package 5186727 55d5085)",
+      "Bash(/c/Users/cheem/.claude/plugins/cache/claude-plugins-official/superpowers/6.0.3/skills/subagent-driven-development/scripts/task-brief /c/Users/cheem/websiteddd/docs/superpowers/plans/2026-06-23-xenoverse-portfolio.md 3)",
+      "Bash(npx tsc *)"
     ]
   }
 }

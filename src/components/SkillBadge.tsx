@@ -1,4 +1,5 @@
 import type { Skill, SkillTier } from '../data/types'
+import { playClick } from '../sound/click'
 
 const SHIELD_CLIP =
   'polygon(50% 0%, 90% 8%, 100% 25%, 92% 75%, 50% 100%, 8% 75%, 0% 25%, 10% 8%)'
@@ -75,7 +76,7 @@ export function SkillBadge({ skill, selected, onSelect, onHover }: SkillBadgePro
   return (
     <button
       type="button"
-      onClick={onSelect}
+      onClick={() => { playClick(); onSelect() }}
       onMouseEnter={onHover}
       onFocus={onHover}
       aria-label={skill.name}

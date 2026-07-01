@@ -76,6 +76,26 @@ export function AboutScreen() {
 
             <StatSection title="Profile" items={profile} />
             <StatSection title="Loadout" items={loadout} />
+
+            {content.experience.length > 0 && (
+              <section className="mt-5">
+                <h2 className="mb-3 flex items-center gap-2 border-b border-gold/40 pb-1 text-sm font-black tracking-[0.3em] text-gold">
+                  <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_10px_#f2c14e]" />
+                  EXPERIENCE
+                </h2>
+                <ul className="space-y-2">
+                  {content.experience.map((e) => (
+                    <li
+                      key={e.id}
+                      className="rounded border-l-4 border-gold bg-ki-600/20 px-3 py-1.5 text-sm text-white"
+                    >
+                      <span className="font-bold">{e.role}</span> — {e.org}{' '}
+                      <span className="text-ki-200">({e.period})</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
           </div>
         </div>
       </div>

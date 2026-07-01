@@ -1,18 +1,29 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { ContactScreen } from './ContactScreen'
 import { content } from '../data/content'
 
-test('renders each contact as a link with correct href', () => {
+test('renders a roster tile for every contact', () => {
   render(<ContactScreen />)
   for (const c of content.contacts) {
-    const link = screen.getByRole('link', { name: new RegExp(c.label, 'i') })
-    expect(link).toHaveAttribute('href', c.url)
+    expect(screen.getByRole('button', { name: c.label })).toBeInTheDocument()
   }
 })
 
-test('renders experience entries', () => {
+test('active contact renders an OPEN PROFILE link with correct href', () => {
   render(<ContactScreen />)
-  for (const e of content.experience) {
-    expect(screen.getByText(new RegExp(e.role, 'i'))).toBeInTheDocument()
+  const first = content.contacts[0]
+  const link = screen.getByRole('link', { name: /open profile/i })
+  expect(link).toHaveAttribute('href', first.url)
+})
+
+test('selecting a roster tile swaps the portrait', async () => {
+  render(<ContactScreen />)
+  const target = content.contacts.find((c) => c.id === 'em') ?? content.contacts[1]
+  await userEvent.click(screen.getByRole('button', { name: target.label }))
+  if (target.description) {
+    expect(screen.getByText(target.description)).toBeInTheDocument()
   }
+  const link = screen.getByRole('link', { name: /open profile/i })
+  expect(link).toHaveAttribute('href', target.url)
 })

@@ -3,7 +3,7 @@ import type { ProjectTier } from '../data/types'
 export const TIER_COLOR: Record<ProjectTier, string> = {
   1: '#5d8df5',
   2: '#4ade80',
-  3: '#f472b6',
+  3: '#a855f7',
   4: '#f2c14e',
 }
 
