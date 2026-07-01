@@ -64,7 +64,7 @@ export function GameShell() {
               <JumpNav
                 active={screen as SectionId}
                 onJump={withClick(goTo)}
-                onReturn={withClick(() => goTo('hub'))}
+                onReturn={() => { playClick(); goTo('hub') }}
               />
               <button
                 type="button"

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactElement } from 'react'
 import type { SectionId } from '../state/useGameState'
 import { XenoSelectScreen, type XenoSelectItem } from './XenoSelectScreen'
 import {
@@ -21,7 +21,7 @@ const ITEMS: XenoSelectItem[] = OPTIONS.map((o) => ({
   meta: o.meta,
 }))
 
-const PREVIEWS: Record<SectionId, JSX.Element> = {
+const PREVIEWS: Record<SectionId, ReactElement> = {
   about: <AboutPreview />,
   skills: <SkillsPreview />,
   projects: <ProjectsPreview />,
