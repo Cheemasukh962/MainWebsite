@@ -28,6 +28,22 @@
   100% { transform: translate3d(0, -110vh, 0); opacity: 0; }
 }
 
+@keyframes capsule-pop {
+  0%   { transform: scale(0.6) rotate(-8deg); opacity: 0; }
+  60%  { transform: scale(1.08) rotate(2deg);  opacity: 1; }
+  100% { transform: scale(1)   rotate(0);     opacity: 1; }
+}
+@keyframes fade-up {
+  0%   { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0);   opacity: 1; }
+}
+
+.reveal { animation: fade-up 0.4s ease-out both; }
+.reveal:first-child,
+.reveal svg { animation: capsule-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
 @media (prefers-reduced-motion: reduce) {
   .xeno-anim { animation: none !important; }
+  .reveal,
+  .reveal svg { animation: none !important; }
 }

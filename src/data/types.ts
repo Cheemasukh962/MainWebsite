@@ -12,12 +12,17 @@ export interface Skill {
   mastery?: string[]
   projects?: string[]
 }
+export type ProjectTier = 1 | 2 | 3 | 4
+
 export interface Project {
   id: string
   title: string
   description: string
   tags: string[]
   links: { label: string; url: string }[]
+  tier?: ProjectTier
+  icon?: string
+  meta?: string
 }
 export interface ContactLink { id: string; label: string; url: string; icon: string }
 export interface ExperienceEntry { id: string; role: string; org: string; period: string }
